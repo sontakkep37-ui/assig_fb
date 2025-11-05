@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body align="center">
+    <h1>onfocus_blur</h1>
+    <table style="margin: auto; border: 1px solid black; padding: 15px; align="center">
+        <tr>
+            <td>
+                <form action="submit_form.php" method="post">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+                    <label for="instagram">Instagram:</label><br>
+                    <input type="text" id="instagram" name="instagram" required><br><br>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4" required></textarea><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </td>
+        </tr>
+
+
+
+        <script>
+            document.querySelector('form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const instagram = document.getElementById('instagram').value.trim();
+                const message = document.getElementById('message').value.trim();
+                if (!name || !instagram || !message) {
+                    showFeedback('Please fill in all fields.', false);
+                    return;
+                }
+                showFeedback('Thank you for contacting us, ' + name + '! We will get back to you soon.', true);
+                this.reset();
+            });
+
+        </script>
+    </table>
+</body>
+
+</html>
